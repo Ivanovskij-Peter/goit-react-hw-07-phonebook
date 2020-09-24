@@ -5,11 +5,15 @@ import ContactsItems from '../contacts/ContactsItems';
 import './PhoneBook.css';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
+import operations from '../contacts-operations';
 
 class PhoneBook extends Component {
   state = {
     isExsist: false,
   };
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
 
   render() {
     return (
@@ -33,7 +37,8 @@ class PhoneBook extends Component {
         </CSSTransition>
         <ContactsForm />
         <CSSTransition
-          in={this.props.contactsItems.length > 1 || this.props.filter !== ''}
+          //
+          in={this.props.filter !== ''}
           timeout={500}
           unmountOnExit
         >
@@ -48,5 +53,8 @@ const mapStateToProps = state => ({
   contactsItems: state.contacts.contacts,
   filter: state.contacts.filter,
 });
+const mapDispatchToProps = dispatch => ({
+  fetchContacts: () => dispatch(operations.fetchContacts()),
+});
 
-export default connect(mapStateToProps)(PhoneBook);
+export default connect(mapStateToProps, mapDispatchToProps)(PhoneBook);

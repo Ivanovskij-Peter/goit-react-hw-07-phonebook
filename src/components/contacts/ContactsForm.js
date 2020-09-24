@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import addContact from '../redux/actions';
+import addContact from '../contacts-operations';
 import { connect } from 'react-redux';
 
 class ContactsForm extends Component {

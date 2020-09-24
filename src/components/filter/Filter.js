@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import actions from '../redux/actions';
+import * as actions from '../redux/actions';
 
 function Filter({ filter, changeFilter }) {
   return (

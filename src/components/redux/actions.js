@@ -1,21 +1,26 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// const addContact = contact => ({
-//   type: types.ADD,
-//   payload: contact,
-// });
-const addContact = createAction('phonebook/add');
+export const fetchContactsRequest = createAction(
+  'contacts/fetchContactsRequest',
+);
+export const fetchContactSuccess = createAction('contacts/fetchContactSuccess');
 
-// const deleteContact = id => ({
-//   type: types.DELETE,
-//   payload: id,
-// });
-const deleteContact = createAction('phonebook/delete');
+export const fetchContactError = createAction('contacts/fetchContactError');
 
-// const changeFilter = value => ({
-//   type: types.FILTER,
-//   payload: value,
-// });
-const changeFilter = createAction('phonebook/filter');
+export const addContactRequest = createAction('contacts/addContactsRequest');
 
-export default { addContact, deleteContact, changeFilter };
+export const addContactSuccess = createAction('contacts/addContactsSuccess');
+export const addContactError = createAction('contacts/addContactsError');
+
+export const deleteContactRequest = createAction(
+  'contacts/deleteContactsRequest',
+);
+
+export const deleteContactSuccess = createAction(
+  'contacts/deleteContactsSuccess',
+);
+export const deleteContactError = createAction('contacts/deleteContactsError');
+
+export const deleteContact = createAction('phonebook/delete');
+
+export const changeFilter = createAction('phonebook/filter');

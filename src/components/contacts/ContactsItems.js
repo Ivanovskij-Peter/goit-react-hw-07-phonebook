@@ -2,7 +2,7 @@ import React from 'react';
 import './ContactsItems.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import actions from '../redux/actions';
+import deleteContact from '../contacts-operations';
 
 const filtredArr = (contactsItems, filter) => {
   return filter
@@ -29,10 +29,10 @@ function ContactsItems({ contactsItems, deleteContact, filter }) {
   );
 }
 const mapStateToProps = state => ({
-  contactsItems: state.contacts.contacts,
-  filter: state.contacts.filter,
+  contactsItems: state.contacts,
+  filter: state.filter,
 });
 const mapDispatchToProps = dispatch => ({
-  deleteContact: id => dispatch(actions.deleteContact(id)),
+  deleteContact: id => dispatch(deleteContact.deleteContact(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsItems);
